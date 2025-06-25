@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chloe Ai-IoT Dashboard</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 30px; }
+    .card { padding: 20px; margin: 10px; border: 1px solid #ddd; border-radius: 10px; display: inline-block; }
+  </style>
+</head>
+<body>
+  <h1>🌱 Chloe Ai-IoT Dashboard</h1>
+  <div class="card">
+    <h2>Temperature</h2>
+    <p id="temp">-- °C</p>
+  </div>
+  <div class="card">
+    <h2>pH Level</h2>
+    <p id="ph">--</p>
+  </div>
+
+  <script>
+    async function getData() {
+      // Replace with your Firebase URL or JSON API endpoint
+      const response = await fetch('https://your-data-source.json');
+      const data = await response.json();
+      document.getElementById('temp').textContent = data.temperature + ' °C';
+      document.getElementById('ph').textContent = data.ph;
+    }
+
+    setInterval(getData, 5000); // Refresh every 5 seconds
+    getData();
+  </script>
+</body>
+</html>
